@@ -1,14 +1,80 @@
-# Welcome to your Expo app with SQLite 👋
+# Week 06 – SQLite CRUD Application (Expo React Native)
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This project demonstrates how to implement a **local SQLite database** in a React Native mobile application using **Expo SQLite**. The app allows users to manage a list of logged users and their login timestamps through full **CRUD (Create, Read, Update, Delete)** operations.
 
-## Get started
+The goal of this lab is to understand how mobile applications can store and manipulate persistent data locally without requiring a remote server.
+
+
+### Technologies Used
+
+- React Native
+- Expo
+- Expo SQLite
+- TypeScript
+
+
+### Features
+
+The application supports the following database operations:
+
+#### Create
+Insert a new logged user with a username and login timestamp.
+
+#### Read
+Display all stored user records from the SQLite database.
+
+#### Update
+Modify an existing user's username or login timestamp.
+
+#### Delete
+Remove a user record from the database.
+
+#### Additional Controls
+- Refresh records
+- Search users
+- Reset form
+- Recreate database table
+
+
+### Database Schema
+
+The application uses a single SQLite table:
+
+```sql
+CREATE TABLE logged_users (
+  id INTEGER PRIMARY KEY NOT NULL,
+  username TEXT NOT NULL,
+  login_time TEXT NOT NULL
+);
+```
+### How It Works
+
+The app initializes the SQLite database using the SQLiteProvider from Expo SQLite.
+
+On the first run, a migration function creates the database table and inserts sample records.
+
+The UI allows users to perform CRUD operations that execute SQL queries such as:
+
+```sql
+INSERT INTO logged_users
+SELECT * FROM logged_users
+UPDATE logged_users
+DELETE FROM logged_users
+
+```
+
+### Installation
+
+Install dependencies:
+```
+npm install
+```
+Install SQLite package:
+
+```
 npx expo install expo-sqlite
-
-CRUD: Insert, Read, Update, Delete
-Tables: Drop db, Create and populate database
-All Tables: SQL Master
-
-![Screenshot_2025-01-18-13-18-26-489_host exp exponent 1](https://github.com/user-attachments/assets/05f12ec8-81e6-47db-ba6f-53395ec982a6)
-
-License: MIT
+```
+Start the development server:
+```
+npx expo start
+```
